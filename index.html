@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Two-Minute Chime</title>
+</head>
+
+<body onload="init()">
+    <h1>Two-Minute Chime</h1>
+    <p id="time"></p>
+    <audio id="audio" src="1.mp3"></audio>
+    <script>
+        function init() {
+            updateTime();
+            setInterval(updateTime, 1000);
+        }
+
+        function updateTime() {
+            var now = new Date();
+            var minute = now.getMinutes();
+            var second = now.getSeconds();
+            var timeString = padZero(minute) + ":" + padZero(second);
+            document.getElementById("time").textContent = timeString;
+            if (second == 0 && (minute == 2 || minute == 4 || minute == 6 || minute == 8 || minute == 10 || minute == 12 || minute == 14 || minute == 16 || minute == 18 || minute == 20 || minute == 22 || minute == 24 || minute == 26 || minute == 28 || minute == 30 || minute == 32 || minute == 34 || minute == 36 || minute == 38 || minute == 40 || minute == 42 || minute == 44 || minute == 46 || minute == 48 || minute == 50 || minute == 52 || minute == 54 || minute == 56 || minute == 58)) {
+                playAudio();
+            }
+        }
+
+        function padZero(num) {
+            return num.toString().padStart(2, "0");
+        }
+
+        function playAudio() {
+            var audio = document.getElementById("audio");
+            audio.volume = 0.5;
+            audio.play();
+        }
+    </script>
+</body>
+
+</html>
